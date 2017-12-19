@@ -49,7 +49,14 @@
                             <outlet property="delegate" destination="G4C-fi-wQ3" id="TJD-rO-HQE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Todojon" id="JbP-Oj-CaI"/>
+                    <navigationItem key="navigationItem" title="Todojon" id="JbP-Oj-CaI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Pg0-o7-Fk9">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addButtonPressed:" destination="G4C-fi-wQ3" id="dVh-n4-1Va"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gP5-Gn-vi0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
