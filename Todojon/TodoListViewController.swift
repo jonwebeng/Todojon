@@ -10,9 +10,16 @@ import UIKit
 
 class TodoListViewController: UITableViewController {
     var itemArray = [ "Find Touristologists", "Find Web-Engineeers", "Find Investors"]
+    let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // To prevent crash the app if TodoListArray is empty...
+        //itemArray = defaults.array(forKey: "TodoListArray") as! [String]
+        // Use optionals
+        if let items = defaults.array(forKey: "TodoListArray") as? [String] {
+            itemArray = items
+        }
     }
     // Mark - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return itemArray.count}
@@ -40,6 +47,7 @@ class TodoListViewController: UITableViewController {
             //what will happen once the user clicks the Add Item button on our UIAlert
             //print("Success!")
             self.itemArray.append(textField.text!)
+            self.defaults.set(self.itemArray, forKey: "TodoListArray")
             self.tableView.reloadData()
         }
         alert.addTextField { (alertTextField) in
